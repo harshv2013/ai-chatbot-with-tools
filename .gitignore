@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual Environment
+.venv/
+venv/
+.venmcp/
+ENV/
+env/
+.venmcp
+ventool
+
+# Environment variables (IMPORTANT!)
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+logs/
+*.log
+
+# Test files
+tests/__pycache__/
+.pytest_cache/
+
+# Temporary files
+*.tmp
+*.bak
+
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Remove demo text
+demo.txt
