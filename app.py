@@ -8,16 +8,16 @@ import os
 from datetime import datetime
 from dotenv import load_dotenv
 
-from src.azure_openai_client import AzureOpenAIClient
-from src.mcp_client import MCPClient, MCPToolRegistry
+from src.ai_client import AzureOpenAIClient
+from src.tool_registry import ToolManager, ToolRegistry
 
 # Load environment
 load_dotenv()
 
 # Initialize clients
 ai_client = AzureOpenAIClient()
-mcp_client = MCPClient()
-tool_registry = MCPToolRegistry(
+tool_manager = ToolManager()
+tool_registry = ToolRegistry(
     file_base_path=os.getenv("FILE_SERVER_PATH", "./test_files")
 )
 
@@ -76,7 +76,7 @@ def clear_conversation():
 def get_stats():
     """Get chatbot statistics"""
     history_length = ai_client.get_history_length()
-    servers = mcp_client.get_available_servers()
+    servers = tool_manager .get_available_servers()
     tools = len(tool_registry.get_all_tools())
     
     return f"""### 📊 Statistics
@@ -234,14 +234,14 @@ with app:
 
 if __name__ == "__main__":
     # Initialize MCP servers (optional, for display)
-    asyncio.run(mcp_client.start_server(
-        "file-system",
-        "src/mcp_servers/fs_server.py"
-    ))
-    asyncio.run(mcp_client.start_server(
-        "calculator",
-        "src/mcp_servers/calculator_server.py"
-    ))
+    # asyncio.run(tool_manager .start_server(
+    #     "file-system",
+    #     "src/mcp_servers/fs_server.py"
+    # ))
+    # asyncio.run(tool_manager .start_server(
+    #     "calculator",
+    #     "src/mcp_servers/calculator_server.py"
+    # ))
     
     # Launch Gradio
     app.launch(

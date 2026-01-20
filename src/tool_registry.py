@@ -9,7 +9,7 @@ import subprocess
 import os
 
 
-class MCPClient:
+class ToolManager:
     """Client to interact with MCP servers"""
     
     def __init__(self):
@@ -211,7 +211,7 @@ class CalculatorTools:
 Conversion: {value} {unit_names[from_unit]} = {result:.4f} {unit_names[to_unit]}"""
 
 
-class MCPToolRegistry:
+class ToolRegistry:
     """Registry for all available MCP tools"""
     
     def __init__(self, file_base_path: str = "./test_files"):
